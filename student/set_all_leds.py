@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-from random import *
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
 
 from sphero_sdk import SpheroRvrObserver
@@ -30,14 +29,13 @@ def main():
         # Delay to show LEDs change
         time.sleep(1)
 
-        for x in range (0, 10):
-            rvr.set_all_leds(
-                led_group=RvrLedGroups.all_lights.value,
-                led_brightness_values=[color for _ in range(10) for color in [randrange(0,255), randrange(0,255), randrange(0,255)]]
-            )
+        rvr.set_all_leds(
+            led_group=RvrLedGroups.all_lights.value,
+            led_brightness_values=[color for _ in range(10) for color in [255, 0, 0]]
+        )
 
         # Delay to show LEDs change
-            time.sleep(1)
+        time.sleep(1)
 
     except KeyboardInterrupt:
         print('\nProgram terminated with keyboard interrupt.')
