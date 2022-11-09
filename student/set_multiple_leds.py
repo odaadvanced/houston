@@ -12,7 +12,7 @@ rvr = SpheroRvrObserver()
 
 
 def main():
-    """ This program demonstrates how to set the all the LEDs.
+    """ This program demonstrates how to set multiple LEDs.
     """
 
     try:
@@ -30,8 +30,11 @@ def main():
         time.sleep(1)
 
         rvr.set_all_leds(
-            led_group=RvrLedGroups.all_lights.value,
-            led_brightness_values=[color for _ in range(10) for color in [25, 0, 200]]
+            led_group=RvrLedGroups.headlight_left.value | RvrLedGroups.headlight_right.value,
+            led_brightness_values=[
+                255, 0, 0,
+                0, 0, 255
+            ]
         )
 
         # Delay to show LEDs change
